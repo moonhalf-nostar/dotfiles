@@ -26,7 +26,7 @@ cp_dotfiles() {
     # if file or dirs already exist, backup them beform copy
     # if parent dirs not exist, make parents
     # BUG: ** make sure the argument not end with `/` **
-    par_dir=$(dirname "$1")
+    par_dir="$HOME"/$(dirname "$1")
     if [ ! -d "$par_dir" ]; then
         echo parent dir "'$par_dir'" not exists, create
         mkdir -p "$par_dir"
