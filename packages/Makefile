@@ -1,3 +1,5 @@
+prefix := $(HOME)/.local
+
 .PHONY: all
 all: tmux byobu nvim zsh
 	@echo all done
@@ -6,7 +8,7 @@ tmux_dir := tmux-3.5a
 
 tmux:
 	tar -zxvf $(tmux_dir).tar.gz
-	cd $(tmux_dir) && ./configure --prefix=/usr/local \
+	cd $(tmux_dir) && ./configure --prefix=$(prefix) \
 		&& $(MAKE) -j && $(MAKE) install
 	cp $(tmux_dir)/tmux .
 
@@ -15,7 +17,7 @@ byobu_dir := byobu-6.12
 byobu:
 	tar -zxvf $(byobu_dir).tar.gz
 	cd $(byobu_dir) && ./autogen.sh
-	cd $(byobu_dir) && ./configure --prefix=/usr/local \
+	cd $(byobu_dir) && ./configure --prefix=$(prefix) \
 		&& $(MAKE) -j && $(MAKE) install
 	cp $(byobu_dir)/usr/bin/byobu .
 
@@ -30,7 +32,6 @@ zsh_dir := zsh-5.9
 
 zsh:
 	tar -Jxvf $(zsh_dir).tar.xz
-	cd $(zsh_dir) && ./configure --prefix=/usr/local \
+	cd $(zsh_dir) && ./configure --prefix=$(prefix) \
 		&& $(MAKE) -j && $(MAKE) install
 	cp $(zsh_dir)/Src/zsh .
-
