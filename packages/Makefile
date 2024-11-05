@@ -25,7 +25,7 @@ nvim_dir := nvim-linux64
 
 nvim:
 	tar -zxvf $(nvim_dir).tar.gz
-	cp -r $(nvim_dir)/* /usr/local
+	cp -r $(nvim_dir)/* $(prefix)
 	cp $(nvim_dir)/bin/nvim .
 
 zsh_dir := zsh-5.9
