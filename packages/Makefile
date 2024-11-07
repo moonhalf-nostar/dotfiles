@@ -13,8 +13,8 @@ nvim_dir := nvim-linux64
 
 $(nvim):
 	tar -zxvf $(nvim_dir).tar.gz
-	mkdir -p `dirname $(nvim)`
-	ln -s $(realpath $(nvim_dir)/bin/nvim) $(nvim)
+	mkdir -p $(dir $(nvim))
+	ln -s $(realpath .)/$(nvim_dir)/bin/nvim $(nvim)
 
 zsh_dir := zsh-5.9
 
