@@ -54,6 +54,8 @@ Plug 'tpope/vim-surround'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
+Plug 'sgur/vim-textobj-parameter'
+let g:vim_textobj_parameter_mapping = 'a'
 
 Plug 'preservim/nerdtree'
 let g:NERDTreeWinSize = 33
