@@ -6,18 +6,12 @@
 " be careful about that in other files being sourced
 let mapleader = ' '
 
-" source plugs if exists, else prompt
+" source my plugin file
 " linux file:
-"   ~/.vim/my_plugin.vim
+"   ~/.config/nvim/my_plugin.vim
 " windows file:
 "   ~/vimfiles/my_plugin.vim
-let my_plugin = split(&rtp, ',')[0] . '/' . 'my_plugin.vim'
-if filereadable(expand(my_plugin))
-    exec "source" my_plugin
-    unlet my_plugin
-else
-    echo $'not fount {my_plugin}, continue without plugins'
-endif
+runtime my_plugin.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -218,8 +212,10 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-vnoremap <silent> * :<C-U>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-U>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+if !has("nvim")
+    vnoremap <silent> * :<C-U>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+    vnoremap <silent> # :<C-U>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -272,7 +268,7 @@ map <leader>cd :lcd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try
-  set switchbuf=useopen,usetab,newtab
+    set switchbuf=useopen,usetab,newtab
 catch
 endtry
 
@@ -343,10 +339,10 @@ map <leader>pp :set nu!<cr>:setlocal paste!<cr>
 map <leader>v :!$VIMRUNTIME/macros/less.sh %<cr>
 " lessmode func
 func LessInitFunc()
-  set nocursorcolumn nocursorline
-  set nonu nornu
-  mapclear
-  map s u
-  set showtabline=1
+    set nocursorcolumn nocursorline
+    set nonu nornu
+    mapclear
+    map s u
+    set showtabline=1
 endfunc
 
