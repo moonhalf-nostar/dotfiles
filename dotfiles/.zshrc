@@ -112,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [[ ! $TERM =~ 256color ]]; then
+if [[ ! $TERM =~ '256color|ghostty' ]]; then
     TERM="$TERM"-256color
 fi
 export LANG=en_US.UTF-8
